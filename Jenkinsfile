@@ -25,6 +25,14 @@ pipeline {
         always {
             junit allowEmptyResults: true,
                   testResults: 'target/surefire-reports/TEST-*.xml'
+                  publishHTML(target: [
+    reportDir: 'target',
+    reportFiles: 'cucumber-report.html',
+    reportName: 'Cucumber HTML Report',
+    keepAll: true,
+    alwaysLinkToLastBuild: true,
+    allowMissing: false
+])
         }
     }
 }
